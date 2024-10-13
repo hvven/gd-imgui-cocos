@@ -359,7 +359,7 @@ void ImGuiCocos::renderFrame() const {
 			CCDirector::sharedDirector()->getOpenGLView()->setScissorInPoints(orig.x, end.y, end.x - orig.x, orig.y - end.y);
 
 			if (hasVtxOffset) {
-			#if !defined(GEODE_IS_ANDROID)
+			#if !defined(GEODE_IS_ANDROID) && !defined(GEODE_IS_IOS)
 				glDrawElementsBaseVertex(GL_TRIANGLES, cmd.ElemCount, GL_UNSIGNED_SHORT, reinterpret_cast<void*>(cmd.IdxOffset * sizeof(ImDrawIdx)), cmd.VtxOffset);
 			#endif
 			} else {

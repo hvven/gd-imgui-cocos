@@ -14,6 +14,7 @@ $on_mod(Unloaded) {
 	ImGuiCocos::get().destroy();
 }
 
+#ifndef GEODE_IS_IOS
 class $modify(CCMouseDispatcher) {
 	bool dispatchScrollMSG(float y, float x) {
 		if (!ImGuiCocos::get().isInitialized())
@@ -56,6 +57,7 @@ class $modify(CCIMEDispatcher) {
 		io.AddKeyEvent(ImGuiKey_Backspace, false);
 	}
 };
+#endif
 
 ImGuiKey cocosToImGuiKey(cocos2d::enumKeyCodes key) {
 	switch (key) {
@@ -82,6 +84,7 @@ bool shouldBlockInput() {
 	return inst.isVisible() && inst.getInputMode() == ImGuiCocos::InputMode::Blocking;
 }
 
+#ifndef GEODE_IS_IOS
 class $modify(CCKeyboardDispatcher) {
 	bool dispatchKeyboardMSG(enumKeyCodes key, bool down, bool idk) {
 		if (!ImGuiCocos::get().isInitialized())
@@ -101,6 +104,7 @@ class $modify(CCKeyboardDispatcher) {
 		}
 	}
 };
+#endif
 
 class $modify(CCTouchDispatcher) {
 	void touches(CCSet* touches, CCEvent* event, unsigned int type) {
@@ -157,6 +161,7 @@ class $modify(CCEGLView) {
 
 #else
 
+#ifndef GEODE_IS_IOS
 #include <Geode/modify/CCDirector.hpp>
 
 class $modify(CCDirector) {
@@ -166,5 +171,6 @@ class $modify(CCDirector) {
 			ImGuiCocos::get().drawFrame();
 	}
 };
+#endif
 
 #endif
