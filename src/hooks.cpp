@@ -134,6 +134,11 @@ class $modify(CCTouchDispatcher) {
 			}
 			CCTouchDispatcher::touches(touches, event, type);
 		}
+
+		if (io.WantTextInput)
+			ImGuiCocos::openKeyboard();
+		else
+			ImGuiCocos::closeKeyboard();
 	}
 };
 
