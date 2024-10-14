@@ -124,6 +124,7 @@ class $modify(CCTouchDispatcher) {
 				io.AddMouseButtonEvent(0, true);
 			} else if (type == CCTOUCHENDED || type == CCTOUCHCANCELLED) {
 				io.AddMouseButtonEvent(0, false);
+				CCTouchDispatcher::touches(touches, event, cocos2d::CCTOUCHCANCELLED); // ADDED
 			}
 			if (type == CCTOUCHMOVED) {
 				CCTouchDispatcher::touches(touches, event, CCTOUCHCANCELLED);
